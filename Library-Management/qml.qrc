@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>custom-component/MyButton.qml</file>
+        <file>custom-component/ErrorDialog.qml</file>
+        <file>custom-component/MyMenu.qml</file>
+        <file>pages/LoggedInPage.qml</file>
+        <file>pages/LoginPage.qml</file>
+        <file>pages/CreateAccount.qml</file>
+        <file>assets/login-bg.jpg</file>
+        <file>assets/signup-bg.jpg</file>
+        <file>assets/back-arrow.png</file>
+    </qresource>
+</RCC>
