@@ -24,5 +24,6 @@
         <file>assets/status-returned.png</file>
         <file>custom-component/BookTable.qml</file>
         <file>custom-component/InfoColumn.qml</file>
+        <file>assets/search-icn-2.png</file>
     </qresource>
 </RCC>

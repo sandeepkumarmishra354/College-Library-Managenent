@@ -3,7 +3,7 @@
 
 DatabaseApi::DatabaseApi(QObject *parent) : QObject(parent)
 {
-    db_file = getDatabasePath() + "plbmdb.dat";
+    db_file = getDatabasePath() + db_file_name;
 }
 
 void DatabaseApi::writeToFile(const QString &content)

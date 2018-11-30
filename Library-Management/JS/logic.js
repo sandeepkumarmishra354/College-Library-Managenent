@@ -1,10 +1,10 @@
-function doLogin() {
-    if(password_id.displayText.length >=6 && username_id.displayText !== "")
+function doLogin(username,password) {
+    if(password.length >=6 && username !== "")
     {
         var st = jsondb.isCorrect(page_rect.username_txt,page_rect.password_txt)
         if(st)
         {
-            if(jsonuser_db.login(page_rect.username_txt))
+            if(jsonuser_db.login(username))
             {
                 if(mainStack != null)
                 {
@@ -57,6 +57,7 @@ function createAccount() {
             jsondb.saveNewUsernamePassword(page_rect.username_txt,
                                            page_rect.password_txt)
             enabled = true
+            doLogin(page_rect.username_txt,page_rect.password_txt)
         }
         else
         {

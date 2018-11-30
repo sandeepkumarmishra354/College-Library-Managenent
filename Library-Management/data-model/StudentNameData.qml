@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.3
+import com.json.userdetails.db 1.0
 
 ListModel {
     id: model_root

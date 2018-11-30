@@ -3,7 +3,7 @@
 
 UserDetailsApi::UserDetailsApi(QObject *parent) : QObject(parent)
 {
-    db_file = getDatabasePath() + "plbmusrdb.dat";
+    db_file = getDatabasePath() + db_file_name;
     connect(&pThread,&QThread::started,this, &UserDetailsApi::initNameList);
     connect(this,&UserDetailsApi::threadFinished,&pThread,&QThread::quit);
 }

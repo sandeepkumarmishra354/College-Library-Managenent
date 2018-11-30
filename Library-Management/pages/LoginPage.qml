@@ -117,7 +117,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 buttonColor: "#3C40C6"
                 pressedColor: "#487EB0"
-                onClicked: LOGIC.doLogin()
+                onClicked: LOGIC.doLogin(username_id.displayText,password_id.displayText)
             }
 
             Text {

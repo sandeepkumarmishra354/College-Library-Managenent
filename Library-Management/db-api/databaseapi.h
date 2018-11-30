@@ -17,6 +17,7 @@ class DatabaseApi : public QObject
     Q_OBJECT
 private:
     QString db_file;
+    const QString db_file_name = "admins-record.dat";
     QJsonObject jsonObj;
     void writeToFile(QString const&);
     QString getFileContent() const;

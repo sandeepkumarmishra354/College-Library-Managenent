@@ -20,6 +20,7 @@ private:
     QString db_file;
     QString loggedInUser;
     QString currentStudentId;
+    const QString db_file_name = "student-record.dat";
     QThread pThread;
     bool LoggedIn = false;
     bool threadRunning = false;
