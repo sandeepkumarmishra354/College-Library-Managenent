@@ -25,7 +25,6 @@ QString DatabaseApi::getFileContent() const
     {
         QDataStream in(&file);
         in >> content;
-        qDebug()<<content;
         file.close();
     }
     return content;
@@ -79,7 +78,6 @@ bool DatabaseApi::saveNewUsernamePassword(const QString &usrnm, const QString &p
 
 bool DatabaseApi::isCorrect(const QString &usrnm, const QString &pswrd)
 {
-    qDebug()<<usrnm<<" "<<pswrd;
     QString file_con = getFileContent();
     if(file_con.isEmpty())
         return false;

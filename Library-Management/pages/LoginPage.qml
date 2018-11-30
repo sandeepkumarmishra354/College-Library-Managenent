@@ -2,15 +2,69 @@ import QtQuick 2.9
 import QtQuick.Controls 2.3
 import QtGraphicalEffects 1.0
 import com.json.db 1.0
+import com.json.userdetails.db 1.0
 import "../custom-component"
+import "../JS/logic.js" as LOGIC
 
 Page {
-    property var showCreateAccPage: null
+    property var increment: null
+    property StackView mainStack: null
     property JsonDb jsondb: null
+    property UserDetailsDb jsonuser_db: null
     id: page_root
-    background: Image {
+    background: Rectangle {
         id: bg_image
-        source: "qrc:/assets/login-bg.jpg"
+        color: "#00000000"
+        Rectangle {
+            id: ind_rect
+            width: 40
+            height: 40
+            radius: width/2
+            color: "#E71C23"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 5
+            RotationAnimation {
+                id: r_animation
+                target: ind_rect
+                from: 0
+                to: 360
+                duration: 1000
+                running: false
+            }
+            Timer {
+                interval: 5000
+                running: true
+                repeat: true
+                onTriggered: {
+                    r_animation.running = true
+                }
+            }
+
+            SequentialAnimation on color {
+                loops: Animation.Infinite
+                ColorAnimation{from:"#E71C23"; to:"#0A79DF";duration: 3000}
+                ColorAnimation{to:"#E71C23"; from:"#0A79DF";duration: 3000}
+                ColorAnimation{from:"#E71C23"; to:"#45CE30";duration: 3000}
+                ColorAnimation{to:"#E71C23"; from:"#BB2CD9";duration: 3000}
+            }
+            Text {
+                text: qsTr(">")
+                font.bold: true
+                color: "white"
+                font.pointSize: 20
+                anchors.centerIn: parent
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if(increment != null)
+                        increment()
+                }
+
+                cursorShape: Qt.PointingHandCursor
+            }
+        }
     }
 
     Rectangle {
@@ -63,27 +117,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 buttonColor: "#3C40C6"
                 pressedColor: "#487EB0"
-                onClicked: {
-                    if(password_id.displayText.length >=6 && username_id.displayText != "")
-                    {
-                            var st = jsondb.isCorrect(page_rect.username_txt,page_rect.password_txt)
-                            if(st)
-                            {
-                                page_root.parent.push("LoggedInPage.qml",{username:page_rect.username_txt})
-                            }
-                            else
-                            {
-                                dialog.text = qsTr("username or password is incorrect")
-                                dialog.visible = true
-                            }
-                    }
-                    else
-                    {
-                        dialog.text = qsTr("password must be 6 character long.\n"+
-                                            "And username can't be empty")
-                        dialog.visible = true
-                    }
-                }
+                onClicked: LOGIC.doLogin()
             }
 
             Text {
@@ -105,10 +139,10 @@ Page {
                 buttonColor: "#AE1438"
                 pressedColor: "#E71C23"
                 onClicked: {
-                    if(showCreateAccPage != null) {
+                    if(increment != null) {
                         password_id.clear()
                         username_id.clear()
-                        showCreateAccPage();
+                        increment();
                     }
                 }
             }

@@ -1,24 +1,69 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.3
 import QtGraphicalEffects 1.0
-import "../custom-component"
 import com.json.db 1.0
+import com.json.userdetails.db 1.0
+import "../custom-component"
+import "../JS/logic.js" as LOGIC
 
 Page {
     id: page_root
+    property var decrement: null
+    property StackView mainStack: null
     property JsonDb jsondb: null
+    property UserDetailsDb jsonuser_db: null
     property bool isCreating: false
-    background: Image {
+    background: Rectangle {
         id: bg_image
-        source: "qrc:/assets/signup-bg.jpg"
-        MyButton {
-            text: qsTr("Go back")
-            buttonColor: "#BB2CD9"
+        color: "#00000000"
+        Rectangle {
+            id: ind_rect
+            width: 40
+            height: 40
+            radius: width/2
+            color: "#E71C23"
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            anchors.top: parent.top
             anchors.leftMargin: 5
-            anchors.topMargin: 5
-            onClicked: page_root.parent.pop()
+            RotationAnimation {
+                id: r_animation
+                target: ind_rect
+                from: 0
+                to: 360
+                duration: 1000
+                running: false
+            }
+            Timer {
+                interval: 5000
+                running: true
+                repeat: true
+                onTriggered: r_animation.running = true
+            }
+
+            SequentialAnimation on color {
+                loops: Animation.Infinite
+                ColorAnimation{from:"#E71C23"; to:"#0A79DF";duration: 3000}
+                ColorAnimation{to:"#E71C23"; from:"#0A79DF";duration: 3000}
+                ColorAnimation{from:"#E71C23"; to:"#45CE30";duration: 3000}
+                ColorAnimation{to:"#E71C23"; from:"#BB2CD9";duration: 3000}
+            }
+
+            Text {
+                text: qsTr("<")
+                font.bold: true
+                color: "white"
+                font.pointSize: 20
+                anchors.centerIn: parent
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if(decrement != null)
+                        decrement()
+                }
+
+                cursorShape: Qt.PointingHandCursor
+            }
         }
     }
 
@@ -71,31 +116,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 buttonColor: "#3C40C6"
                 pressedColor: "#487EB0"
-                onClicked: {
-                    if(page_rect.password_txt.length <6 || page_rect.username_txt == "")
-                    {
-                        dialog.text = qsTr("password must be 6 character long.\n"+
-                                            "And username can't be empty")
-                        dialog.visible = true
-                        return;
-                    }
-                    else
-                    {
-                        var st = jsondb.isUsernameAvailable(page_rect.username_txt)
-                        if(st)
-                        {
-                            enabled = false
-                            jsondb.saveNewUsernamePassword(page_rect.username_txt,
-                                                           page_rect.password_txt)
-                            enabled = true
-                        }
-                        else
-                        {
-                            dialog.text = qsTr("username already exists try diff. username")
-                            dialog.visible = true
-                        }
-                    }
-                }
+                onClicked: LOGIC.createAccount()
             }
             MyButton {
                 text: "Login"
@@ -103,9 +124,12 @@ Page {
                 buttonColor: "#AE1438"
                 pressedColor: "#E71C23"
                 onClicked: {
-                    username_id.clear()
-                    password_id.clear()
-                    page_root.parent.pop()
+                    if(decrement != null)
+                    {
+                        username_id.clear()
+                        password_id.clear()
+                        decrement()
+                    }
                 }
             }
         }

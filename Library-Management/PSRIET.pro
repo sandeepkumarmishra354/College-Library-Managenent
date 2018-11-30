@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    db-api/databaseapi.cpp
+    db-api/databaseapi.cpp \
+    db-api/userdetailsapi.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    db-api/databaseapi.h
+    db-api/databaseapi.h \
+    db-api/userdetailsapi.h

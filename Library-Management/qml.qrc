@@ -7,8 +7,22 @@
         <file>pages/LoggedInPage.qml</file>
         <file>pages/LoginPage.qml</file>
         <file>pages/CreateAccount.qml</file>
-        <file>assets/login-bg.jpg</file>
-        <file>assets/signup-bg.jpg</file>
-        <file>assets/back-arrow.png</file>
+        <file>assets/clg1.jpg</file>
+        <file>pages/HomePage.qml</file>
+        <file>JS/logic.js</file>
+        <file>custom-component/Header.qml</file>
+        <file>custom-component/StudentsName.qml</file>
+        <file>data-model/StudentNameData.qml</file>
+        <file>assets/menu-option.png</file>
+        <file>assets/add-more.png</file>
+        <file>custom-component/AddNewStudentPopUp.qml</file>
+        <file>custom-component/StudentNameDelegate.qml</file>
+        <file>data-model/StudentRecordData.qml</file>
+        <file>custom-component/StudentDetailsSection.qml</file>
+        <file>custom-component/StudentOptionSection.qml</file>
+        <file>assets/status-not-returned.png</file>
+        <file>assets/status-returned.png</file>
+        <file>custom-component/BookTable.qml</file>
+        <file>custom-component/InfoColumn.qml</file>
     </qresource>
 </RCC>
