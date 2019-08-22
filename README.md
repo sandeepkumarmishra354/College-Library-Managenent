@@ -1,5 +1,5 @@
 # College-Library-Managenent
 keep records of students
-![login](https://drive.google.com/open?id=1jDhkeYr1HA0MB2luIYvw0ZMSHdWWdrhZ)
-![after login](https://drive.google.com/open?id=1srS6S2mtpmgCJ_x1Yv03mEAA2jXlalWw)
-![add new record](https://drive.google.com/open?id=1PjnKIGbKrVmKE3syWDBVEvfFAyweRc2A)
+![login](https://github.com/sandeepkumarmishra354/College-Library-Managenent/blob/master/screenshots/library_login.png)
+![after login](https://github.com/sandeepkumarmishra354/College-Library-Managenent/blob/master/screenshots/library_logged_in.png)
+![add new record](https://github.com/sandeepkumarmishra354/College-Library-Managenent/blob/master/screenshots/library_add.png)
